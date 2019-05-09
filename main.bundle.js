@@ -1449,10 +1449,7 @@ var TreeInternalComponent = (function () {
         }));
         this.subscriptions.push(this.treeService.unselectStream(this.tree).subscribe(function () { return (_this.isSelected = false); }));
         this.subscriptions.push(this.treeService.draggedStream(this.tree, this.nodeElementRef).subscribe(function (e) {
-            if (_this.tree.hasSibling(e.captured.tree)) {
-                _this.swapWithSibling(e.captured.tree, _this.tree);
-            }
-            else if (_this.tree.isBranch()) {
+            if (_this.tree.isBranch()) {
                 _this.moveNodeToThisTreeAndRemoveFromPreviousOne(e, _this.tree);
             }
             else {
