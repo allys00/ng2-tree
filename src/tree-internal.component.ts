@@ -139,9 +139,7 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
 
     this.subscriptions.push(
       this.treeService.draggedStream(this.tree, this.nodeElementRef).subscribe((e: NodeDraggableEvent) => {
-        if (this.tree.hasSibling(e.captured.tree)) {
-          this.swapWithSibling(e.captured.tree, this.tree);
-        } else if (this.tree.isBranch()) {
+        if (this.tree.isBranch()) {
           this.moveNodeToThisTreeAndRemoveFromPreviousOne(e, this.tree);
         } else {
           this.moveNodeToParentTreeAndRemoveFromPreviousOne(e, this.tree);
